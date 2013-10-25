@@ -33,7 +33,6 @@ TODO: Error state
 
 {% endif %}
 
-
 {%- if pillar.virtualbox.hostnode.enabled %}
 
 include:
@@ -44,15 +43,65 @@ include:
 virtualbox_packages:
   pkg.installed:
   - names:
-#    - libqtgui4
-#    - libxcb-glx0
-#    - libglapi-mesa
-#    - libqt4-opengl
-#    - libqt4-sql-mysql
-#    - libsdl1
-#    - libxcursor1
-#    - libxinerama1
-#    - libxmu6
+    - fontconfig
+    - fontconfig-config
+    - libasound2
+    - libasyncns0
+    - libaudio2
+    - libavahi-client3
+    - libavahi-common-data
+    - libavahi-common3
+    - libcaca0
+    - libcups2
+    - libcurl3
+    - libflac8
+    - libfontconfig1
+    - libgl1-mesa-dri
+    - libgl1-mesa-glx
+    - libglapi-mesa
+    - libice6
+    - libjpeg-turbo8
+    - libjpeg8
+    - libjson0
+    - liblcms1
+    - libllvm3.0
+    - libmng1
+    - libmysqlclient18
+    - libogg0
+    - libpulse0
+    - libqt4-dbus
+    - libqt4-declarative
+    - libqt4-network
+    - libqt4-opengl
+    - libqt4-script
+    - libqt4-sql
+    - libqt4-sql-mysql
+    - libqt4-xml
+    - libqt4-xmlpatterns
+    - libqtcore4
+    - libqtgui4
+    - libsdl1.2debian
+    - libsm6
+    - libsndfile1
+    - libtiff4
+    - libvorbis0a
+    - libvorbisenc2
+    - libvpx1
+    - libx11-xcb1
+    - libxcb-glx0
+    - libxcursor1
+    - libxdamage1
+    - libxfixes3
+    - libxi6
+    - libxinerama1
+    - libxmu6
+    - libxrender1
+    - libxt6
+    - libxxf86vm1
+#    - mysql-common
+    - qdbus
+    - ttf-dejavu-core
+    - x11-common
     - build-essential
 
 virtualbox_download_package:
