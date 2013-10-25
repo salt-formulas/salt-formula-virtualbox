@@ -119,6 +119,13 @@ virtualbox_install_package:
   - require:
     - cmd: virtualbox_download_package
 
+virtualbox_setup_kernel_drivers:
+  cmd.run:
+  - name: /etc/init.d/vboxdrv setup
+  - cwd: /root
+  - require:
+    - pkg: virtualbox_install_package
+
 {% elif os == "Windows" %}
 
 virtualbox_install_package:
