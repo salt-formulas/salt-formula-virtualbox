@@ -103,7 +103,7 @@ virtualbox_packages:
     - ttf-dejavu-core
     - x11-common
     - build-essential
-    - linux-headers
+    - linux-headers-generic
     - dkms
 
 virtualbox_download_package:
