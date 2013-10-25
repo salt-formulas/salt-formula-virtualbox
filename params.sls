@@ -23,8 +23,6 @@ TODO: Error state
 #}
 {% endif %}
 
-{% if virtualbox_version == '4.2.18' %}
-
 {% if os == "Ubuntu" %}
 
 {% set base_url_fragments = [ 'http://download.virtualbox.org/virtualbox/', virtualbox_version ] %}
