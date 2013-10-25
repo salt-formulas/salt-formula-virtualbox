@@ -1,3 +1,4 @@
+
 {% set os = salt['grains.item']('os')['os'] %}
 
 {% set os_codename = salt['grains.item']('oscodename')['oscodename'] %}
@@ -24,11 +25,11 @@ TODO: Error state
 
 {% if os == "Ubuntu" %}
 
-{% set base_url_fragments = [ 'http://download.virtualbox.org/virtualbox/', virtualbox_version ] %}
-{% set base_url = ""|join(base_url_fragments) %}
+{% set virtualbox_base_url_fragments = [ 'http://download.virtualbox.org/virtualbox/', virtualbox_version ] %}
+{% set virtualbox_base_url = virtualbox_base_url_fragments|join("") %}
 
-{% set base_file_fragments = [ 'virtualbox-', virtualbox_major_version, '_', virtualbox_version, '-', virtualbox_build, '~', os, '~', os_codename, '_amd64.deb' ] %}
-{% set base_file = ""|join(base_file_fragments) %}
+{% set virtualbox_base_file_fragments = [ 'virtualbox-', virtualbox_major_version, '_', virtualbox_version, '-', virtualbox_build, '~', os, '~', os_codename, '_amd64.deb' ] %}
+{% set virtualbox_base_file = virtualbox_base_file_fragments|join("") %}
 
 {% endif %}
 
@@ -56,8 +57,8 @@ virtualbox_packages:
 
 virtualbox_download_package:
   cmd.run:
-  - name: wget {{ base_url }}/{{ base_file }}
-  - unless: "[ -f /root/{{ base_file }} ]"
+  - name: wget {{ virtualbox_base_url }}/{{ virtualbox_base_file }}
+  - unless: "[ -f /root/{{ virtualbox_base_file }} ]"
   - cwd: /root
   - require:
     - pkg: virtualbox_packages
