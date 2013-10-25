@@ -25,7 +25,7 @@ TODO: Error state
 
 {% if os == "Ubuntu" %}
 
-{% set kernel_version = salt['cmd.run']('$(uname -r)') %}
+{% set kernel_version = salt['cmd.run']('uname -r') %}
 
 {% set virtualbox_base_url_fragments = [ 'http://download.virtualbox.org/virtualbox/', virtualbox_version ] %}
 {% set virtualbox_base_url = virtualbox_base_url_fragments|join("") %}
