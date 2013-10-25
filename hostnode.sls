@@ -115,7 +115,7 @@ virtualbox_download_package:
 virtualbox_install_package:
   pkg.installed:
   - sources:
-    - virtualbox-{{ virtualbox_major_version }}: {{ base_file }}
+    - virtualbox-{{ virtualbox_major_version }}: {{ virtualbox_base_file }}
   - require:
     - cmd: virtualbox_download_package
 
