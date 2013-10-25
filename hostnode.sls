@@ -112,22 +112,12 @@ virtualbox_download_package:
   - require:
     - pkg: virtualbox_packages
 
-{#
 virtualbox_install_package:
   pkg.installed:
   - sources:
     - virtualbox-{{ virtualbox_major_version }}: {{ base_file }}
   - require:
     - cmd: virtualbox_download_package
-#}
-
-{#
-virtualbox_install:
-  cmd.run:
-  sudo apt-get install virtualbox-{{ virtualbox_major_version }} --no-install-recommends
-  - require:
-    - cmd: virtualbox_download_package
-#}
 
 {% elif os == "Windows" %}
 
