@@ -27,10 +27,10 @@ TODO: Error state
 
 {% if os == "Ubuntu" %}
 
-{% set base_url_fragments = [ 'http://download.virtualbox.org/virtualbox/', virtualbox_version %}
+{% set base_url_fragments = [ 'http://download.virtualbox.org/virtualbox/', virtualbox_version ] %}
 {% set base_url = ""|join(base_url_fragments) %}
 
-{% set base_file_fragments = [ 'virtualbox-', virtualbox_major_version, '_', virtualbox_version, '-', virtualbox_build, '~', os, '~', os_codename, '_amd64.deb' ]
+{% set base_file_fragments = [ 'virtualbox-', virtualbox_major_version, '_', virtualbox_version, '-', virtualbox_build, '~', os, '~', os_codename, '_amd64.deb' ] %}
 {% set base_file = ""|join(base_file_fragments) %}
 
 {% endif %}
