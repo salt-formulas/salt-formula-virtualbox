@@ -16,7 +16,7 @@ virtualbox_repo:
   - human_name: Virtualbox
   - name: deb http://download.virtualbox.org/virtualbox/debian {{ grains.oscodename }} contrib
   - file: /etc/apt/sources.list.d/virtualbox.list
-  - key_url: salt://rabbitmq/conf/virtualbox-apt.gpg
+  - key_url: salt://virtualbox/conf/virtualbox-apt.gpg
 
 virtualbox_packages:
   pkg.installed:
@@ -25,6 +25,8 @@ virtualbox_packages:
     - linux-headers-{{ kernel_version }}
     - dkms
     - virtualbox-{{ virtualbox_version }}
+  - require:
+    - pkgrepo: virtualbox_repo
 
 virtualbox_setup_kernel_drivers:
   cmd.run:
