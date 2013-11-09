@@ -29,10 +29,10 @@ virtualbox_packages:
     - pkgrepo: virtualbox_repo
 
 virtualbox_setup_kernel_drivers:
-  cmd.run:
+  cmd.wait:
   - name: /etc/init.d/vboxdrv setup
   - cwd: /root
-  - require:
+  - watch:
     - pkg: virtualbox_packages
 
 {% elif grains.os == "Windows" %}
