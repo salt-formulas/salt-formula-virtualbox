@@ -7,7 +7,7 @@
 
 {%- if pillar.virtualbox.hostnode.enabled %}
 
-{% if grains.os == 'Ubuntu' %}
+{% if grains.os_family == 'Debian' %}
 
 {% set kernel_version = salt['cmd.run']('uname -r') %}
 
@@ -35,7 +35,7 @@ virtualbox_setup_kernel_drivers:
   - watch:
     - pkg: virtualbox_packages
 
-{% elif grains.os == "Windows" %}
+{% elif grains.os_family == "Windows" %}
 
 virtualbox_install_package:
   pkg.installed:
