@@ -6,7 +6,7 @@ VirtualBox is a general-purpose full virtualizer for x86 hardware, targeted at s
 ## Sample pillar
 
     virtualbox:
-      hostnode:
+      host:
         enabled: true
         version: 4.3
         extensions: false
