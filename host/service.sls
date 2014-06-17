@@ -3,8 +3,6 @@
 
 {%- if grains.os_family == 'Debian' %}
 
-{%- set kernel_version = salt['cmd.run']('uname -r') %}
-
 virtualbox_repo:
   pkgrepo.managed:
   - human_name: virtualbox
@@ -28,6 +26,10 @@ virtualbox_setup_kernel_drivers:
   - cwd: /root
   - watch:
     - pkg: virtualbox_packages
+
+{%- elif grains.os_family == "RedHat" %}
+
+{# TODO #}
 
 {%- elif grains.os_family == "Windows" %}
 
