@@ -1,18 +1,13 @@
-{% if pillar.virtualbox.hostnode.version is defined %}
-{% set virtualbox_version = pillar.virtualbox.hostnode.version %}
-{% else %}
-{% set virtualbox_version = '4.3' %}
-{% endif %}
+{%- from "virtualbox/map.jinja" import host with context %}
+{%- if host.enabled %}
 
-{%- if pillar.virtualbox.hostnode.enabled %}
+{%- if grains.os_family == 'Debian' %}
 
-{% if grains.os_family == 'Debian' %}
-
-{% set kernel_version = salt['cmd.run']('uname -r') %}
+{%- set kernel_version = salt['cmd.run']('uname -r') %}
 
 virtualbox_repo:
   pkgrepo.managed:
-  - human_name: Virtualbox
+  - human_name: virtualbox
   - name: deb http://download.virtualbox.org/virtualbox/debian {{ grains.oscodename }} contrib
   - file: /etc/apt/sources.list.d/virtualbox.list
   - key_url: salt://virtualbox/conf/virtualbox-apt.gpg
@@ -21,9 +16,9 @@ virtualbox_packages:
   pkg.installed:
   - names:
     - build-essential
-    - linux-headers-{{ kernel_version }}
     - dkms
-    - virtualbox-{{ virtualbox_version }}
+    - linux-headers-{{ grains.kernelrelease }}
+    - virtualbox-{{ host.version }}
   - require:
     - pkgrepo: virtualbox_repo
 
@@ -34,7 +29,7 @@ virtualbox_setup_kernel_drivers:
   - watch:
     - pkg: virtualbox_packages
 
-{% elif grains.os_family == "Windows" %}
+{%- elif grains.os_family == "Windows" %}
 
 virtualbox_install_package:
   pkg.installed:

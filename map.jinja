@@ -1,0 +1,10 @@
+{% set host = salt['grains.filter_by']({
+    'Debian': {
+        'service': 'virtualbox',
+        'version': '4.3',
+    },
+    'RedHat': {
+        'service': 'virtualbox',
+        'version': '4.3',
+    },
+}, merge=salt['pillar.get']('virtualbox:host')) %}

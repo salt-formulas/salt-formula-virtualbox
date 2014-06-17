@@ -1,5 +1,5 @@
 
 include:
-{% if pillar.virtualbox.hostnode is defined %}
-- virtualbox.hostnode
+{% if pillar.virtualbox.host is defined %}
+- virtualbox.host
 {% endif %}
