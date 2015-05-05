@@ -38,5 +38,4 @@ virtualbox_install_package:
   - name: virtualbox_x64_en
 
 {%- endif %}
-
 {%- endif %}
