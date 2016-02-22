@@ -8,7 +8,7 @@ virtualbox_repo:
   - human_name: virtualbox
   - name: deb http://download.virtualbox.org/virtualbox/debian {{ grains.oscodename }} contrib
   - file: /etc/apt/sources.list.d/virtualbox.list
-  - key_url: salt://virtualbox/conf/virtualbox-apt.gpg
+  - key_url: salt://virtualbox/files/virtualbox-apt.gpg
 
 virtualbox_packages:
   pkg.installed:
